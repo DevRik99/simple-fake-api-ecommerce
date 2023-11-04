@@ -11,12 +11,6 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/categoria" class="flex items-center gap-2">
-            <i class="bx bx-category bx-sm"></i>
-            <p>Categorias</p>
-          </router-link>
-        </li>
-        <li>
           <router-link to="/carrito" class="flex items-center gap-2">
             <i class="bx bx-cart bx-sm"></i>
             <p>Carrito</p>
@@ -26,15 +20,15 @@
     </div>
     <div class="">
       <span class="relative inline-block w-full border border-gray-400 rounded">
-        <InputText v-model="search" placeholder="Buscar" class="p-2 w-full" />
-        <!-- <i class="bx bx-search bx" /> -->
+        <InputText v-model="query" placeholder="Buscar" class="w-full p-2" />
+        <!-- <i class="bx bx-search" /> -->
       </span>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from "vue";
 import InputText from "primevue/inputtext";
-const search = ref("");
+import { useProduct } from "./../composables/useProduct";
+const { query } = useProduct();
 </script>
