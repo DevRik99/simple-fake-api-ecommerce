@@ -7,7 +7,7 @@ import "./assets/css/main.css";
 import "primevue/resources/themes/lara-light-teal/theme.css";
 import "boxicons/css/boxicons.min.css";
 
-import App from "./App.vue";
+import App from "./layout.vue";
 import router from "./routes/routes";
 const app = createApp(App);
 
