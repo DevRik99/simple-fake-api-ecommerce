@@ -63,11 +63,7 @@
         <Rating :modelValue="slotProps.data.rating.rate" readonly :cancel="false" />
       </template>
     </Column>
-    <Column header="Reviews">
-      <template #body="slotProps">
-        <Rating :modelValue="slotProps.data.rating.rate" readonly :cancel="false" />
-      </template>
-    </Column>
+
     <Column style="width: 10%; min-width: 8rem" header="">
       <template #body="slotProps">
         <button

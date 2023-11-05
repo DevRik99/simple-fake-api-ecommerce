@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { useToast } from "primevue/usetoast";
 
 
@@ -41,7 +41,6 @@ export const useCart = () => {
     }
     const deleteProductFromCart = (id) => {
         const exist = productsCart.value.find(({ id: idOriginal }) => idOriginal == id)
-
         if (exist) {
             productsCart.value = productsCart.value.filter(({ id: idOriginal }) => idOriginal != id)
             toast.add({
@@ -52,6 +51,20 @@ export const useCart = () => {
             });
         }
     }
+    watch(() => productsCart,
+        () => {
+            localStorage.setItem('productsCart', JSON.stringify(productsCart.value))
+        },
+        {
+            deep: true,
+        })
+    onMounted(() => {
+        const productsOfLocalStorage = localStorage.getItem('productsCart')
+        if (productsOfLocalStorage) {
+            productsCart.value = JSON.parse(productsOfLocalStorage)
+        }
+
+    })
     return {
         productsCart,
         showCart,
